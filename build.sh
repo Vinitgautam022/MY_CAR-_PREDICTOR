@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Install setuptools and wheel first before other packages
-pip install --upgrade setuptools wheel pip
+# Upgrade pip, setuptools, wheel before anything else
+pip install --upgrade pip setuptools wheel
 
-# Install requirements
+# Install all requirements
 pip install -r requirements.txt
