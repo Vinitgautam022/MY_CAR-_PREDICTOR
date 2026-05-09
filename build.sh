@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Upgrade pip, setuptools, wheel before anything else
+# Upgrade pip, setuptools, wheel first
 pip install --upgrade pip setuptools wheel
 
-# Install all requirements
-pip install -r requirements.txt
+# Install requirements with only binary wheels (no source compilation)
+pip install --only-binary :all: -r requirements.txt
