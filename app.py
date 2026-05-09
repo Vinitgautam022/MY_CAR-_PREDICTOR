@@ -12,15 +12,28 @@ cors = CORS(app)
 
 # Load model and encoders
 try:
+    import os
+    print(f"Current directory: {os.getcwd()}")
+    print(f"Files in directory: {os.listdir('.')}")
+    
     model = pickle.load(open('LinearRegressionModel.pkl', 'rb'))
+    print("✅ Model loaded successfully")
+    
     with open('encoders.pkl', 'rb') as f:
         encoders = pickle.load(f)
+    print("✅ Encoders loaded successfully")
+    
     with open('scaler.pkl', 'rb') as f:
         scaler = pickle.load(f)
+    print("✅ Scaler loaded successfully")
+    
     with open('model_metrics.json', 'r') as f:
         model_metrics = json.load(f)
-except:
-    print("⚠️  Using fallback - some models may not be available")
+    print("✅ Model metrics loaded successfully")
+except Exception as e:
+    print(f"❌ Error loading models: {str(e)}")
+    import traceback
+    traceback.print_exc()
     model = None
     encoders = None
     scaler = None
