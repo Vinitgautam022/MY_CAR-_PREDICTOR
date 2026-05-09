@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: MY_CAR_PREDICTOR
+    env: python
+    pythonVersion: 3.11
+    buildCommand: bash build.sh
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 10000
